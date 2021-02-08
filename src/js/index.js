@@ -9,7 +9,28 @@ import "bootstrap";
 import "../styles/index.scss";
 
 //import your own components
-import { Home } from "./component/home.js";
+import { Counter } from "./component/counter.js";
 
 //render your react application
-ReactDOM.render(<Home />, document.querySelector("#app"));
+let contador = 0;
+var _four;
+var _three;
+var _two;
+var _one;
+setInterval(function() {
+	_four = Math.floor(contador / 1000);
+	_three = Math.floor(contador / 100);
+	_two = Math.floor(contador / 10);
+	_one = Math.floor(contador / 1);
+	//console.log(_four, _three, _two, _one);
+	ReactDOM.render(
+		<Counter
+			CounterOne={_one}
+			CounterTwo={_two}
+			CounterThree={_three}
+			CounterFour={_four}
+		/>,
+		document.querySelector("#app")
+	);
+	contador++;
+}, 1000);
